@@ -1,0 +1,12 @@
+- hosts: localhost
+  tasks:
+  - name: ensure docker is installed is at the latest version
+    yum: name=docker state=latest
+    become: yes
+  - name: add user ec2-user to docker group
+    user: user=ec2-user groups=docker
+    become: yes
+  - name: start service docker
+    service: name=docker state=started            
+    become: yes 
+     
