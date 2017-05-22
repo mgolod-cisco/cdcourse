@@ -1,0 +1,5 @@
+- hosts: localhost
+  tasks:
+  - name: clone cdcourse 
+    git: repo=https://github.com/mgolod-cisco/cdcourse  dest=/home/ec2-user/cdcourse  
+     
