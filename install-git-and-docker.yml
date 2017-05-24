@@ -1,0 +1,19 @@
+- hosts: localhost
+  tasks:
+  - name: ensure git is at the latest version
+    yum: name=git state=latest
+    become: yes
+  - name: clone petclininc 
+    git: repo=https://github.com/mgolod-cisco/spring-petclinic  dest=/home/ec2-user/pet-clinic clone=yes 
+    become: yes
+  - name: clone cdcourse
+    git: repo=https://github.com/mgolod-cisco/cdcourse  dest=/home/ec2-user/cdcrouse
+  - name: ensure docker is installed is at the latest version
+    yum: name=docker state=latest
+    become: yes
+  - name: add user ec2-user to docker group
+    user: user=ec2-user groups=docker
+    become: yes
+  - name: start service docker
+    service: name=docker state=started            
+    become: yes 
