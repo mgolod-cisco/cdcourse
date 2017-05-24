@@ -1,0 +1,9 @@
+- hosts: localhost
+  tasks:
+  - name: download and install maven targz
+    unarchive: 
+      src: "http://www-eu.apache.org/dist/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz" 
+      dest: /home/ec2-user 
+      creates: /home/ec2-user/apache-maven-3.5.0
+      copy: no
+    
